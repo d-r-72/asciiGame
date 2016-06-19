@@ -1,10 +1,14 @@
 #include <iostream>
 
+#include "Game.h"
+
 int main()
 {
+	Game game;
+	game.init();
 
-	std::cout << "Hello world\n";
-
+	int k;
+	std::cin >> k;
 
 	return 0;
 }
