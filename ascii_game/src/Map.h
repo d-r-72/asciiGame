@@ -5,6 +5,7 @@
 #include <string>
 #include <algorithm>
 #include <vector>
+#include <fstream>
 
 #include "Color.h"
 #include "constants.h"
@@ -17,7 +18,7 @@ public:
 	Map();
 	~Map();
 
-	void init();
+	void init(std::string filename);
 
 	void print();
 
@@ -25,14 +26,14 @@ public:
 
 	void add(Object obj, int x, int y);
 
-	void setTile(int x, int y, char symbol) { m_map[x][y] = symbol; }
+	void setTile(int x, int y, char symbol) { map[x][y] = symbol; }
 
-	char getTile(int x, int y) { return m_map[y][x]; }
+	char getTile(int x, int y) { return map[y][x]; }
 
 private:
 
 	Color color;
-	char m_map[cons::SIZE][cons::SIZE];
+	std::vector<std::string> map;
 };
 
 #endif //MAP_H

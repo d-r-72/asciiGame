@@ -17,8 +17,8 @@ void Map::add(Object obj, int x, int y)
 		break;
 
 	case Object::TREE:
-		m_map[x - 1][y] = '*';
-		m_map[x][y] = '|';
+		map[x - 1][y] = '*';
+		map[x][y] = '|';
 		break;
 
 	default:
@@ -26,37 +26,33 @@ void Map::add(Object obj, int x, int y)
 	}
 }
 
-void Map::init()
+void Map::init(std::string filename)
 {
-	for (int i = 0; i < cons::SIZE; i++)
+	std::ifstream in;
+
+	in.open(filename);
+
+	if (in.fail())
 	{
-		for (int j = 0; j < cons::SIZE; j++)
-		{
-			m_map[i][j] = cons::GRASS;
-		}
+		std::perror(filename.c_str());
+		exit(1);
 	}
+
+	std::string line;
+
+	while (getline(in, line))
+	{
+		map.push_back(line);
+	}
+
+	in.close();
 }
 
 void Map::print()
 {
-	std::cout << std::endl;
-	for (int i = 0; i < cons::SIZE; i++)
+	for (int i = 0; i < map.size(); i++)
 	{
-		for (int j = 0; j < cons::SIZE; j++)
-		{
-			switch (m_map[i][j])
-			{
-			case '*':
-				color.setColorGreen();
-				std::cout << "   " << m_map[i][j];
-				color.setColorWhite();
-				break;
-
-			default:
-				std::cout << "   " << m_map[i][j];
-			}
-		}
-		std::cout << "\n";
+		printf("%s\n", map[i].c_str());
 	}
 }
 

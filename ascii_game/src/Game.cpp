@@ -11,7 +11,7 @@ Game::~Game()
 
 void Game::init()
 {
-	map.init();
+	map.init("map.txt");
 	state = GameState::PLAYING;
 
 	main();
