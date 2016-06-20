@@ -32,6 +32,7 @@ public:
 
 private:
 
+	std::string _fileName;
 	Color color;
 	std::vector<std::string> map;
 };

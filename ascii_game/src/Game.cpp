@@ -11,7 +11,7 @@ Game::~Game()
 
 void Game::init()
 {
-	map.init("map.txt");
+	map.init("ascii_game/map.txt");
 	state = GameState::PLAYING;
 
 	main();
@@ -20,7 +20,8 @@ void Game::init()
 void Game::update()
 {
 	map.update();
-	player.update(map, input());
+	if (player.update(map, input()) == 1)
+		state = GameState::QUIT;
 }
 
 void Game::main()
@@ -35,7 +36,7 @@ void Game::main()
 
 void Game::optionMenu()
 {
-	std::cout << std::string(100, '\n');
+	system("cls");
 	printf("1. Add Tree\n");
 	printf("2. Add Door\n");
 

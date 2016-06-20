@@ -12,7 +12,7 @@ Player::~Player()
 {
 }
 
-void Player::update(Map &map, int dir)
+int Player::update(Map &map, int dir)
 {
 	bool done = false;
 	while (done == false)
@@ -46,11 +46,15 @@ void Player::update(Map &map, int dir)
 			done = true;
 		}
 		else if (dir == 5)
+		{
+			return 1;
 			break;
+		}
 		else if (dir == 6)
 			break;
 		else if (dir == 7)
 			break;
 	}
+	return 0;
 }
 

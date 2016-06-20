@@ -7,6 +7,17 @@ Map::Map()
 
 Map::~Map()
 {
+	std::string editedName;
+	editedName = _fileName;
+	editedName.append("1");
+
+	std::ofstream out(editedName);
+
+	for (int i = 0; i < map.size(); i++)
+	{
+		out << map[i] << std::endl;
+	}
+
 }
 
 void Map::add(Object obj, int x, int y)
@@ -28,6 +39,7 @@ void Map::add(Object obj, int x, int y)
 
 void Map::init(std::string filename)
 {
+	_fileName = filename;
 	std::ifstream in;
 
 	in.open(filename);
@@ -58,6 +70,6 @@ void Map::print()
 
 void Map::update()
 {
-	std::cout << std::string(100, '\n');
+	system("cls");
 	print();
 }

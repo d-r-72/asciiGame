@@ -13,7 +13,7 @@ public:
 	Player();
 	~Player();
 
-	void update(Map &map, int dir);
+	int update(Map &map, int dir);
 	int getInput();
 
 private:
