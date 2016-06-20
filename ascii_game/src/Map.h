@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <vector>
 
+#include "Color.h"
 #include "constants.h"
 
 enum Object { TREE, DOOR };
@@ -20,12 +21,17 @@ public:
 
 	void print();
 
-	void setTile(int x, int y, char symbol) { m_map[y][x] = symbol; }
+	void update();
+
+	void add(Object obj, int x, int y);
+
+	void setTile(int x, int y, char symbol) { m_map[x][y] = symbol; }
 
 	char getTile(int x, int y) { return m_map[y][x]; }
 
 private:
 
+	Color color;
 	char m_map[cons::SIZE][cons::SIZE];
 };
 

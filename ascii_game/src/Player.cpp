@@ -8,75 +8,49 @@ Player::Player()
 	m_y = 0;
 }
 
-
 Player::~Player()
 {
 }
 
-void Player::update(Map map)
+void Player::update(Map &map, int dir)
 {
 	bool done = false;
 	while (done == false)
 	{
-		int dir = getInput();
-
 		if (dir == 1)
 		{
-
+			map.setTile(m_x - 1, m_y, '@');
+			map.setTile(m_x, m_y, cons::CUT_GRASS);
+			m_x -= 1;
+			done = true;
 		}
 		else if (dir == 2)
 		{
-
+			map.setTile(m_x, m_y - 1, '@');
+			map.setTile(m_x, m_y, cons::CUT_GRASS);
+			m_y -= 1;
+			done = true;
 		}
 		else if (dir == 3)
 		{
-
+			map.setTile(m_x + 1, m_y, '@');
+			map.setTile(m_x, m_y, cons::CUT_GRASS);
+			m_x += 1;
+			done = true;
 		}
 		else if (dir == 4)
 		{
-
+			map.setTile(m_x, m_y + 1, '@');
+			map.setTile(m_x, m_y, cons::CUT_GRASS);
+			m_y += 1;
+			done = true;
 		}
 		else if (dir == 5)
 			break;
 		else if (dir == 6)
-			std::cout << "invalid input\n";
+			break;
+		else if (dir == 7)
+			break;
 	}
 }
 
-int Player::getInput()
-{
-	printf("Please enter a movement command W.A.S.D or Q to quit: ");
-	char k = _getch();
-	std::cout << std::endl;
-
-	switch (k)
-	{
-	case 'w':
-	case 'W':
-		return 1;
-		break;
-
-	case 'a':
-	case 'A':
-		return 2;
-		break;
-
-	case 's':
-	case 'S':
-		return 3;
-		break;
-
-	case 'd':
-	case 'D':
-		return 4;
-		break;
-
-	case 'q':
-	case 'Q':
-		return 5;
-
-	default:
-		return 6;
-	}
-
-}

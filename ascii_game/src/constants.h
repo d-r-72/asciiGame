@@ -7,7 +7,8 @@
 namespace cons {
 	const int SIZE{ 12 };
 	const int AREA{ SIZE * SIZE };
-
+	const char GRASS{ '_' };
+	const char CUT_GRASS{ '_' };
 }
 
 
